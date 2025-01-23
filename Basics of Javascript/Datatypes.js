@@ -1,5 +1,3 @@
-let Sym = Symbol('Mysymbol1');
-
 let userDetails = {
     name: "Ravi Gupta",
     email: "ravigupta@gmail.com",
@@ -9,5 +7,4 @@ let userDetails = {
     [Sym]: 56
 };
 
-console.log(userDetails[Sym]);
-console.log(`User Name:- ${userDetails['email']} Greet:- ${userDetails['greet']}`);
+console.log(`User Name:- ${userDetails.name} Greet:- ${userDetails["greet"]}`);
