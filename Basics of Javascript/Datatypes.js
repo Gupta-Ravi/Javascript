@@ -1,6 +1,9 @@
-const accountId = "roshan-yadav@gmail.com"
-let accountName = "Roshan Yadav"
-var accountPassword = "123@abc.com"
+let userDetails = {
+    name: "Ravi Gupta",
+    email: "ravigupta@gmail.com",
+    phone: 9004592315, 
+    age: 22,
+    "greet": "Hello World!"
+};
 
-console.log(accountId);
-console.table([accountId, accountName, accountPassword])
+console.log(`User Name:- ${userDetails.name} Greet:- ${userDetails["greet"]}`);
