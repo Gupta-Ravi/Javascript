@@ -30,6 +30,10 @@
 
 <!-- 
 
+======================================================================================================================================================
+How to select & manipulate the query in Javascript (practice on console)
+======================================================================================================================================================
+
 Basic Method -
 For selecting the <h1> in console - document.getElementById('title')
 For selecting the element by class name - document.getElementByClassName('heading')
@@ -51,6 +55,10 @@ Advanced Method - {note: it supports or you can use all css selector as a argume
 Interesting - Let's manipulate the only H2 with title attribute by using .querySelector()
     Code: doucment.querySelector('h2[id="title"]')
 
+====================================================================================================================================================
+Access more attributes with .getElementById()
+====================================================================================================================================================
+
 We can access more attributes just by adding .AttributeName() - 
 1. document.getElementById('title').getAttribute('id')
 2. document.getElementById('title').getAttribute('class')
@@ -59,12 +67,19 @@ We can also set the attribute by using setAttribute() - {note: this method overw
 1. document.getElementById('title').setAttribute('class', 'test-1 heading')
 2. document.getElementById('title').setAttribute('for', 'test-2')
 
+======================================================================================================================================================
+How to Style
+======================================================================================================================================================
+
 We can add the styles to are DOM directly by using .style.styleName = 'value' -
 1. let test = document.getElementById('title')
     test.style.backgroundColor = '#454545'
     test.style.padding = '23px'
     test.style.borderRadius = '24px'
 
+======================================================================================================================================================
+Difference between .textContent, .innerHTML, .innerText
+======================================================================================================================================================
 We can access the text between the tags by using .textContent, .innerHTML, .innerText
 1. differnce between .textContent & .innerText
     By uisng both properties We can see the text inside the html tags, but due to some css properties, some 
