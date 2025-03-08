@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to create a new elements</title>
+</head>
+<body>
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thusday</div>
+    </div>
+</body>
+<script>
+
+    //How to create a new element
+
+    let div = document.createElement('div');
+    console.log(div);
+
+    div.className = 'main';
+    div.id = Math.round(Math.random() * 3 + 1);
+    div.setAttribute('title','Heading'); //prefired by developers
+    div.style.color = 'orange';
+    div.style.padding = '10px';
+    //this method was not prefered by developers because of optimization and in-direct control.
+    div.innerText = "Today is - Holiday"
+    
+    //prefered one at the place of innerText
+    let addText = document.createTextNode("Today is Holiday.");
+    div.appendChild(addText);
+    
+    document.body.appendChild(div);
+
+//===========================================================================================================
+    
+    //How to move from parent to child and vise-versa
+
+    let parent = document.querySelector('.parent')
+
+    //.children method convert the output into HTMLCollection.
+    console.log(parent.children);
+    console.log(parent.children[2]);
+    console.log(parent.children[2].innerHTML);
+
+    //print all the days
+    for (let i = 0; i < parent.children.length; i++ ) {
+        console.log(parent.children[i].innerHTML);
+    }
+
+    //access first and last element of .parent class & also called as Traversing
+    //parent -> child
+    parent.children[2].style.color = 'orange';
+    console.log(parent.firstElementChild);
+    console.log(parent.lastElementChild);
+
+    //child -> parents & child -> next sibling(same)
+    let child = document.querySelector('.day');
+    console.log(child.parentElement);
+    console.log(child.nextElementSibling);
+
+    console.log("Nodes = ", parent.childNodes);
+
+</script>
+</html>
