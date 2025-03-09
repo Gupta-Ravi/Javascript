@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update, Remove Elements</title>
+</head>
+<body>
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+    <script>
+
+        //How to create a new element
+
+        //this method is not optimized or prefered by developers.
+        console.time("function-1") //for optimization testing
+        function addLanguage(language) {
+            let li = document.createElement('li');
+
+            li.innerText = language;
+            document.querySelector('.language').appendChild(li)
+        }
+
+        addLanguage('Python');
+        addLanguage("Java")
+        console.timeEnd("function-1"); //time end
+
+        console.time('function-2') //for optimization testing
+        function addLanguageOptimize(language) {
+            let li = document.createElement('li');
+            let addText = document.createTextNode(`${language}`)
+
+            li.appendChild(addText);
+            document.querySelector('.language').appendChild(li)
+        }
+        console.timeEnd('function-2'); //time end
+
+        //How to Edit
+
+        //1st-Method
+        let secondLanguage = document.querySelector('li:nth-child(2)');
+        // document.innerText = "Css"
+        let newLi = document.createElement('li');
+        newLi.textContent = 'Mojo';
+        secondLanguage.replaceWith(newLi);
+
+        //2nd-Method
+        let firstLanguage = document.querySelector('li:first-child');
+        firstLanguage.outerHTML = "<li>TypeScript</li>"
+
+        //How to remove 
+
+        let lastLanguage = document.querySelector('li:last-child');
+        lastLanguage.remove();
+
+    </script>
+</body>
+</html>
