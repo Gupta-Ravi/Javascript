@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <div>
+        <ul id="images">
+            <li><img width = "200px" src="https://images.pexels.com/photos/3260921/pexels-photo-3260921.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="photoshop" id="photoshop"></li>
+            <li><img width = "200px" src="https://images.pexels.com/photos/402028/pexels-photo-402028.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" id="japan"></li>
+            <li><img width = "200px" src="https://images.pexels.com/photos/709552/pexels-photo-709552.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" id="river"></li>
+            <li><img width = "200px" src="https://images.pexels.com/photos/1543417/pexels-photo-1543417.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" id="owl"></li>
+            <li><img width = "200px" src="https://images.pexels.com/photos/45178/monk-hands-faith-person-45178.jpeg?auto=compress&cs=tinysrgb&w=600" alt="" id="prayer"></li>
+            <li><a href="https://www.google.com/" id="google">Google</a></li>
+        </ul>
+    </div>
+    <script>
+
+        //Second approach
+        //always avoid directly put onclick="" method on tag - not prefered by developers
+
+        // document.getElementById('owl').onclick = () => {
+        //     alert('Owl Clicked!');
+        // }
+
+        //Third approach
+        // document.getElementById('owl').addEventListener('click', function() {
+        //     alert('Owl Clicked Again!')
+        // }, false)
+
+        //Forth approach
+        //by using attachEvent() - when we use firebox or very old method no one ues since now
+
+        //Fifth approach
+        //by JQuery => .on - same as addEventListner
+
+        //more learn about events [type, timestamp, defaultPrevented,
+        // target, toElement, srcElement, currentTarget, clientX, clientY, screenX, 
+        // screenY, altKey, ctrlKey, shiftKey, keyCode]
+
+        // document.getElementById('owl').addEventListener('click', (event) => {
+        //     console.log(event);   
+        // }, false)
+        //default one - event bubbling 
+        //meaning of bubbling - going from inner html to outer html(img => li => ul)
+        
+        //what is a event propagation - there is a two context for propagation 
+        // it will take place when we write true or false after funciton defination in addEventListener(1st, fun_def, true/false)
+        
+        // 1. event bubbling
+        //meaning of bubbling - going from inner html to outer html(img => li => ul)
+
+        // 2. event captuirng
+        //meaning of bubbling - going from outer html to inner html(ul => li => img)
+
+
+        //example for event bubbling - comment the below capturing code to run
+        // document.getElementById('images').addEventListener('click', (event) => {
+        //     console.log('Clicked inside the UL');   
+        // }, false)
+
+        // document.getElementById('owl').addEventListener('click', (event) => {
+        //     console.log('Clicked on owl');   
+        // }, false)
+
+        //example for event capturing - comment the above bubbling code to run
+        // document.getElementById('images').addEventListener('click', (event) => {
+        //     console.log('Clicked inside the UL');   
+        // }, true)
+
+        // document.getElementById('owl').addEventListener('click', (event) => {
+        //     console.log('Clicked on owl');   
+        // }, true)
+
+        //if you want to stop the propagation use - .stopPropagation()
+        // document.getElementById('images').addEventListener('click', (event) => {
+        //     console.log('Clicked inside the UL');   
+        // }, false)
+
+        // document.getElementById('owl').addEventListener('click', (event) => {
+        //     console.log('Clicked on owl');
+        //     event.stopPropagation();
+        // }, false)
+
+        // document.getElementById('google').addEventListener('click', (event) => {
+        //     event.preventDefault(); //to prevent default function 
+        //     event.stopPropagation();
+        //     console.log('Google Clicked'); 
+        // })
+
+        document.querySelector('#images').addEventListener('click', (event) => {
+            // console.log(event.target.parentNode);
+            console.log(event.target.tagName);
+
+            if(event.target.tagName === 'IMG') {
+                let removeItem = event.target.parentNode;
+                removeItem.parentNode.removeChild(removeItem);
+            }
+
+            let removeItem = event.target.parentNode;
+            
+            //first method
+            // removeItem.remove();
+
+            //second Mehtod
+            // removeItem.parentNode.removeChild(removeItem);
+
+        }, false)
+    </script>
+</body>
+</html>
